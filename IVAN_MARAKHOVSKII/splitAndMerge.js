@@ -1,7 +1,7 @@
 function splitAndMerge(str, spl) {
   const ans = str.split(" ");
   if (!ans[0]) {
-    // check for space-only strings
+    // return for space-only string
     return "";
   }
   ans.forEach(function(item, index) {
