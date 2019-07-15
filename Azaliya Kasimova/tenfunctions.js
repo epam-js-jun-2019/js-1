@@ -40,13 +40,29 @@ function reverseWords(str) {
 console.log(reverseWords(" A fun little challenge! "));
 
 //FUNCTION #5
-/*function stringExpansion(str) {
-  return 
+function stringExpansion(str) {
+    var result = "";
+    str.split("").forEach(function(value, index, array) {
+        // check if value is digit
+        if ( value <= 9 ) {
+            // check if next char after value is letter 
+            if (array[index+1] > '9' ) {
+                // repeat letter 
+                for (i=0; i<value-1; i++) {
+                    result += array[index+1];
+                }
+            }
+        }
+        else {
+            result += value;
+        }
+    });
+    return result;
 }
 
-console.log('3D2a5d2f');
-console.log('3d332f2a');
-console.log('abcde');*/
+console.log(stringExpansion('3D2a5d2f'));
+console.log(stringExpansion('3d332f2a'));
+console.log(stringExpansion('abcde'));
 
 //FUNCTION #6
 function sortNumber(a, b) {
