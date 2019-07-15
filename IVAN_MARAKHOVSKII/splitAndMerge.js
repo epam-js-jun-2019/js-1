@@ -7,8 +7,6 @@ function splitAndMerge(str, spl) {
   ans.forEach(function(item, index) {
     ans[index] = item.split("").join(spl);
   });
-
   return ans.join(spl);
 }
 
-console.log(splitAndMerge(" ", ","));
