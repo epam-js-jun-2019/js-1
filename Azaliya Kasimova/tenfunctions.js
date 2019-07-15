@@ -8,8 +8,11 @@ function splitAndMerge(str, sp) {
  console.log(splitAndMerge("Hello World!", ","));
 
  //FUNCTION #2
- 
+function convertToArray(obj) {
+   return Object.keys(obj).map(function(clue) { return [clue, obj[clue]]; })
+}
 
+ console.log(convertToArray({name: 'Jeremy', age: 24, role: 'Software Engineer'}));
 
  //FUNCTION #3
  function toCamelCase(str) {
