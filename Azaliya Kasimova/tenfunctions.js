@@ -64,3 +64,16 @@ function smallest() {
 
 console.log(largest(2, 0.1, -5, 100, 3));
 console.log(smallest(2, 0.1, -5, 100, 3));
+
+//FUNCTION #9
+function countdown(n) {
+    var timer = setInterval(function() {
+         console.log(n--);
+    }, 1000)
+
+    setTimeout(function() {
+        clearInterval(timer);
+    }, (n+1)*1000)
+}
+
+countdown(3);
