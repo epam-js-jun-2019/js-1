@@ -23,25 +23,26 @@ function splitAndMerge(str, sp) {
 function splitAndMerge2(str, sp) {
   let newStr = '';
   str.split(' ').forEach((word, index, arr) => {
-    index == arr.length - 1
+    index === arr.length - 1
       ? (newStr += word.split('').join(sp))
       : (newStr += word.split('').join(sp) + ' ');
   });
   return newStr;
 }
 
-// 2) convert
-function convert(hash) {
+// 2) hashToArr
+function hashToArr(hash) {
   return Object.keys(hash).map(prop => [prop, hash[prop]]);
 }
 
 // 3) toCamelCase
 function toCamelCase(str) {
   let newStr = '';
-  let acc = [];
+  let acc;
   if (str.includes('-')) acc = str.split('-');
   else if (str.includes('_')) acc = str.split('_');
   else if (str.includes(' ')) acc = str.split(' ');
+  else return str;
   acc
     .map((word, index) => {
       if (index === 0) newStr += word;
@@ -50,5 +51,16 @@ function toCamelCase(str) {
       }
     })
     .join('');
+  return newStr;
+}
+
+// 4) wordReverser
+function wordReverser(str) {
+  let newStr = '';
+  str.split(' ').map((word, index, arr) => {
+    index === arr.length - 1
+      ? (newStr += word.split('').reverse().join(''))
+      : (newStr += word.split('').reverse().join('') + ' ');
+  });
   return newStr;
 }
