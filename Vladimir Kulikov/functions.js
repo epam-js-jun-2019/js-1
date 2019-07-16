@@ -133,7 +133,7 @@ Example:
 countDown(3); // 3 2 1 0
 */
 function countDown(seconds) {
-if (seconds < 0) return;
+    if (seconds < 0) return;
     setTimeout(function () {
         console.log(seconds);
         countDown(seconds - 1);
