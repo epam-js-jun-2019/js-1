@@ -34,3 +34,21 @@ function splitAndMerge2(str, sp) {
 function convert(hash) {
   return Object.keys(hash).map(prop => [prop, hash[prop]]);
 }
+
+// 3) toCamelCase
+function toCamelCase(str) {
+  let newStr = '';
+  let acc = [];
+  if (str.includes('-')) acc = str.split('-');
+  else if (str.includes('_')) acc = str.split('_');
+  else if (str.includes(' ')) acc = str.split(' ');
+  acc
+    .map((word, index) => {
+      if (index === 0) newStr += word;
+      else if (word[0] !== undefined) {
+        newStr += word[0].toUpperCase() + word.slice(1);
+      }
+    })
+    .join('');
+  return newStr;
+}
