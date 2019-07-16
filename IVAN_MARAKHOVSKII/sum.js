@@ -1,9 +1,9 @@
-function sum(index){
-    if (index == 0 ) {
-        console.log(arguments)
-        return arguments[0]
-    }else{
-        return arguments[index+1] + sum(index,...arguments)
+function sum(){
+    if (!arguments.length){
+        return 0
+    }
+    else {
+        return arguments[0] + sum.apply(null,[].slice.call(arguments,1))
     }
 }
 
