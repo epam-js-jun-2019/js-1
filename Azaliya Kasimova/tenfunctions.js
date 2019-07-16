@@ -81,6 +81,20 @@ function smallest() {
 console.log(largest(2, 0.1, -5, 100, 3));
 console.log(smallest(2, 0.1, -5, 100, 3));
 
+//FUNCTION #7
+function transform(baseArray) {
+    return baseArray.map(function(value) {
+        return function() {
+            return value;
+        }
+    });
+}
+newArray = transform([10, 20, 30, 40, 50]);
+
+console.log(newArray);
+console.log(newArray[3]());
+console.log(newArray[4]());
+
 //FUNCTION #9
 function countdown(n) {
     var timer = setInterval(function() {
