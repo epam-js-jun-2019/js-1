@@ -29,3 +29,8 @@ function splitAndMerge2(str, sp) {
   });
   return newStr;
 }
+
+// 2) convert
+function convert(hash) {
+  return Object.keys(hash).map(prop => [prop, hash[prop]]);
+}
