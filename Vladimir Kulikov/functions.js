@@ -154,6 +154,5 @@ bound(1) // 10
 Function.prototype.myBind = function (context) {
   var that = this;
   var args = [].slice.apply(arguments).slice(1);
-  return function() { 
-    return that.apply(context, args.concat([].slice.apply(arguments))) };
+  return function() { return that.apply(context, args.concat([].slice.apply(arguments))) };
 }
