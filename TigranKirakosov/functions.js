@@ -137,3 +137,12 @@ function transform(arr) {
     }
   });
 }
+
+// 8) sum
+function sum() {
+  var result = 0;
+  Array.from(arguments).forEach(function (n) {
+    result += n;
+  });
+  return result;
+}
