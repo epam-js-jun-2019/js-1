@@ -70,13 +70,11 @@ function toCamelCase2(str) {
   if (str.match(re)) {
     sp = re;
   }
-  return str.split(sp).map((word, index) => {
-    if (index !== 0) {
-      return word[0].toUpperCase() + word.slice(1)
-    } else {
-      return word
-    }
-  }).join('')
+  return str.split(sp).map((word, index) =>
+    (index !== 0)
+      ? word[0].toUpperCase() + word.slice(1)
+      : word
+  ).join('');
 }
 
 // 4) wordReverser
@@ -117,4 +115,15 @@ function stringExpansion(str) {
       : newStr[i] = str[i];
   }
   return newStr.filter(char => !(+char) && +char !== 0).join('');
+}
+
+// 6) largest/smallest
+function largest() {
+  var result = Array.from(arguments).sort((a, b) => a - b);
+  return result[result.length - 1];
+}
+
+function smallest() {
+  var result = Array.from(arguments).sort((a, b) => a - b);
+  return result[0];
 }
