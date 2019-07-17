@@ -127,3 +127,13 @@ function smallest() {
   var result = Array.from(arguments).sort((a, b) => a - b);
   return result[0];
 }
+
+// 7) transform
+function transform(arr) {
+  return arr.map(function (item) {
+    return function () {
+      var value = item;
+      return value;
+    }
+  });
+}
