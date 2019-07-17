@@ -158,6 +158,7 @@ function largest () {
 
     var numbers=[];
     
+    // transform arguments into array numbers
     for (var i = 0; i < arguments.length; i++) {
         numbers[i] = arguments[i];
     }
@@ -174,6 +175,7 @@ function smallest () {
 
     var numbers=[];
     
+    // transform arguments into array numbers
     for (var i = 0; i < arguments.length; i++) {
         numbers[i] = arguments[i];
     }
@@ -228,10 +230,9 @@ function sum1 () {
     var i = arguments.length - 1;
     var newArguments=[];
 
+    // transform arguments into array newArguments
     for (var i = 0; i < arguments.length - 1; i++){
-
         newArguments.push(arguments[i]);
-        
     }
 
     if (newArguments.length > 0) {
@@ -279,6 +280,7 @@ Function.prototype.myBind = function (context) {
     var boundThis = this;
     var args = [];
 
+    //add arguments in args array without context
     for (var i = 0; i < arguments.length-1; i++) {
         args[i] = arguments[i+1];
     }
@@ -286,16 +288,21 @@ Function.prototype.myBind = function (context) {
     return function () {
 
         var innerArgs=[];
-    
+
+        //transform arguments into array innerArgs
         for (var i = 0; i < arguments.length; i++) {
             innerArgs[i] = arguments[i];
         }
 
+        // join two arrays
         args = args.concat(innerArgs);
+
         return boundThis.apply(context, args);
     }
 }
 
 function addPropToNumber(number, number2) { return this.prop + number * number2; };
+
 var bound = addPropToNumber.myBind({ prop: 9 }, 5);
-console.log(bound(5)); // 34
+
+console.log("FUNCTION 10:                           " + bound(5)); // 34
