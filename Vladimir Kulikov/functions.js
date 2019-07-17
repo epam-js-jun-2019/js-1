@@ -151,7 +151,7 @@ function addPropToNumber(number) { return this.prop + number; }
 var bound = addPropToNumber.myBind({ prop: 9 });
 bound(1) // 10
 */
-Function.prototype.myBind = function (context) {
+Function.prototype.myBind = function(context) {
   var that = this;
   var args = [].slice.apply(arguments).slice(1);
   return function() { return that.apply(context, args.concat([].slice.apply(arguments))) };
