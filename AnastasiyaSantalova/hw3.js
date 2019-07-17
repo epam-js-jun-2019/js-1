@@ -277,11 +277,25 @@ countDown(2);
 
 Function.prototype.myBind = function (context) {
     var boundThis = this;
+    var args = [];
+
+    for (var i = 0; i < arguments.length-1; i++) {
+        args[i] = arguments[i+1];
+    }
+
     return function () {
-        return boundThis.apply(context, arguments)
+
+        var innerArgs=[];
+    
+        for (var i = 0; i < arguments.length; i++) {
+            innerArgs[i] = arguments[i];
+        }
+
+        args = args.concat(innerArgs);
+        return boundThis.apply(context, args);
     }
 }
 
 function addPropToNumber(number, number2) { return this.prop + number * number2; };
-var bound = addPropToNumber.myBind({ prop: 9 });
-console.log(bound(2, 7)); // 23
+var bound = addPropToNumber.myBind({ prop: 9 }, 5);
+console.log(bound(5)); // 34
