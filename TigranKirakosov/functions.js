@@ -112,9 +112,9 @@ function stringExpansion(str) {
   }
   var newStr = [];
   for (var i = 0; i < str.length; i++) {
-    (+str[i] && !(+str[i + 1]))
+    (+str[i] && !(+str[i + 1]) && str[i + 1])
       ? newStr[i] = strRepeat(str[i + 1], +str[i])
       : newStr[i] = str[i];
   }
-  return newStr.filter(char => !(+char)).join('');
+  return newStr.filter(char => !(+char) && +char !== 0).join('');
 }
