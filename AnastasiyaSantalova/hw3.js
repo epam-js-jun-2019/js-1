@@ -112,93 +112,40 @@ function reverse (sentence) {
 console.log("FUNCTION 4:                            " + reverse(" A fun little challenge! "));
 
 
-// FUNCTION 5: 
+// FUNCTION 5: the expansion of the string
 
 function stringExpansion(string) {
 
-    return string.split("").reduce(function(acc,simbol) {
-        //console.log(simbol);
+    var repeatSimbol = 1;
 
-        var repeatSimbol = 0;
+    return string.split("").reduce(function(acc,simbol,ind,arr) {
+
+        // if the simbol is number
 
         if (isNaN(simbol)==false) {
 
-            repeatSimbol = simbol;
+            repeatSimbol = +simbol;
+
+        // if the simbol is letter
 
         } else {
 
-            for (var i=1; i<repeatSimbol; i++) {
+            for (var i = 0; i < repeatSimbol; i++) {
                 acc = acc + simbol;
             }
+
+            repeatSimbol = 1;
 
             return acc;
         }
 
         return acc;
 
-        // if ( isNaN(elem[ind])==false && isNaN(elem[ind+1]) && elem[ind]!=0 ) {
-
-        //     for (var i=1; i<+elem[ind]; i++) {
-        //         acc = acc + elem[ind+1];
-        //     }
-
-        //     return acc;
-
-        // } else if (isNaN(elem[ind])) {
-
-        //     return acc + elem[ind];
-
-        // } else if (elem[ind]==0 && isNaN(elem[ind+1])) {
-
-        //     //console.log(elem[ind]);
-
-        //     elem[ind+1] = "";
-        //     return acc;
-            
-        // } else {
-
-        //     return acc;
-
-        // }
-
     },"");
 
 }
 
-console.log("FUNCTION 5:                            " + stringExpansion("3a0bcd"));
-
-
-// FUNCTION 5: the expansion of that string
-
-function stringExpansion1(string) {
-    
-    var arr = [0,0,0,0,0,0,0,0,0];
-    var countOfSimbols = 1;
-    var start = 0;
-
-    return string.split("").reduce(function(acc,simbol) {
-
-        // if the simbol is number
-        
-        if (isNaN(simbol)==false) {
-
-            countOfSimbols = simbol;
-
-        } else {
-
-            //console.log(arr);
-
-            arr = arr.fill(simbol, start, start+countOfSimbols);
-            start = start+countOfSimbols;
-            
-        }
-
-        return arr;
-    });
-
-};
-
-console.log("FUNCTION 5:                            " + stringExpansion1("3a0bcd"));
+console.log("FUNCTION 5:                            " + stringExpansion("a0bcd4gh"));
 
 
 // FUNCTION 6: largest and smallest number
@@ -323,7 +270,18 @@ function countDown (number) {
 
 }
 
-countDown(7);
+countDown(2);
 
 
-// FUNCTION 10: 
+// FUNCTION 10: prototipe for bind()
+
+Function.prototype.myBind = function (context) {
+    var boundThis = this;
+    return function () {
+        return boundThis.apply(context, arguments)
+    }
+}
+
+function addPropToNumber(number, number2) { return this.prop + number * number2; };
+var bound = addPropToNumber.myBind({ prop: 9 });
+console.log(bound(2, 7)); // 23
