@@ -151,3 +151,13 @@ function countDown(value) {
     setTimeout(function () { console.log(value--) }, i);
   }
 }
+
+// 10) Function.prototype.myBind()
+Function.prototype.myBind = function (newThis) {
+  var target = this;
+  var newArgs = Array.prototype.slice.call(arguments, 1);
+  return function boundFunction() {
+    var targetArgs = Array.prototype.slice.call(arguments);
+    return target.apply(newThis, newArgs.concat(targetArgs));
+  }
+}
