@@ -15,7 +15,7 @@ console.log(convert({ name: 'Jeremy', age: 24, role: 'Software Engineer' }));
 
 //FUNCTION #3
 function toCamelCase(str) {
-    let a = str.search("-");
+    var a = str.search("-");
     if (a > 0) {
         sp = "-";
     } else {
@@ -41,7 +41,7 @@ console.log(reverseWords(" A fun little challenge! "));
 
 //FUNCTION #5
 function stringExpansion(str) {
-    let result = "";
+    var result = "";
     str.split("").forEach(function(value, index, array) {
         // check if value is digit
         if ( value <= 9 ) {
@@ -98,7 +98,7 @@ console.log(newArray[4]());
 
 //FUNCTION #8
 function sum() {
-    let arr = Array.from(arguments);
+    var arr = Array.from(arguments);
     function rec(val) {
         if (val < 0) {
             return 0;
@@ -114,7 +114,7 @@ console.log(sum(1, 3, 5, 7));
 
 //FUNCTION #9
 function countdown(n) {
-    let timer = setInterval(function() {
+    var timer = setInterval(function() {
          console.log(n--);
     }, 1000)
 
@@ -125,9 +125,5 @@ function countdown(n) {
 
 countdown(3);
 
-//FUNCTION #10
-Function.prototype.myBind = function () {
-    return 
-}
 
-/*console.log(myBind());*/
+
