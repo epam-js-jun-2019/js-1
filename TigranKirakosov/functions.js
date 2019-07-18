@@ -23,7 +23,7 @@ function splitAndMerge(str, sp) {
 //version 2
 function splitAndMerge2(str, sp) {
   var newStr = '';
-  str.split(' ').forEach((word, index, arr) => {
+  str.split(' ').forEach(function (word, index, arr) {
     index === arr.length - 1
       ? (newStr += word.split('').join(sp))
       : (newStr += word.split('').join(sp) + ' ');
@@ -35,18 +35,20 @@ function splitAndMerge2(str, sp) {
 function splitAndMerge3(str, sp) {
   return str
     .split(' ')
-    .map(word => word.split('').join(sp))
+    .map(function (word) { return word.split('').join(sp) })
     .join(' ');
 }
 
 // 2) hashToArr
 function hashToArr(hash) {
-  return Object.keys(hash).map(prop => [prop, hash[prop]]);
+  return Object.keys(hash).map(function (prop) {
+    return [prop, hash[prop]]
+  });
 }
 
 // 3) toCamelCase
 
-// invalid (ES6) version 1
+// version 1
 function toCamelCase(str) {
   var newStr = '';
   var acc;
@@ -54,7 +56,7 @@ function toCamelCase(str) {
   else if (str.includes('_')) acc = str.split('_');
   else if (str.includes(' ')) acc = str.split(' ');
   else return str;
-  acc.forEach((word, index) => {
+  acc.forEach(function (word, index) {
     if (index === 0) newStr += word;
     else if (word[0] !== undefined) {
       newStr += word[0].toUpperCase() + word.slice(1);
@@ -70,11 +72,11 @@ function toCamelCase2(str) {
   if (str.match(re)) {
     sp = re;
   }
-  return str.split(sp).map((word, index) =>
-    (index !== 0)
-      ? word[0].toUpperCase() + word.slice(1)
-      : word
-  ).join('');
+  return str.split(sp).map(function (word, index) {
+    if (index !== 0) {
+      return word[0].toUpperCase() + word.slice(1)
+    } else return word;
+  }).join('');
 }
 
 // 4) wordReverser
@@ -82,7 +84,7 @@ function toCamelCase2(str) {
 // version 1
 function wordReverser(str) {
   var newStr = '';
-  str.split(' ').map((word, index, arr) => {
+  str.split(' ').map(function (word, index, arr) {
     index === arr.length - 1
       ? (newStr += word.split('').reverse().join(''))
       : (newStr += word.split('').reverse().join('') + ' ');
@@ -94,7 +96,7 @@ function wordReverser(str) {
 function wordReverser2(str) {
   return str
     .split(' ')
-    .map(word => word.split('').reverse().join(''))
+    .map(function (word) { return word.split('').reverse().join('') })
     .join(' ');
 }
 
@@ -114,17 +116,17 @@ function stringExpansion(str) {
       ? newStr[i] = strRepeat(str[i + 1], +str[i])
       : newStr[i] = str[i];
   }
-  return newStr.filter(char => !(+char) && +char !== 0).join('');
+  return newStr.filter(function (char) { return !(+char) && +char !== 0 }).join('');
 }
 
 // 6) largest/smallest
 function largest() {
-  var result = Array.from(arguments).sort((a, b) => a - b);
+  var result = Array.prototype.slice.call(arguments).sort(function (a, b) { return a - b });
   return result[result.length - 1];
 }
 
 function smallest() {
-  var result = Array.from(arguments).sort((a, b) => a - b);
+  var result = Array.prototype.slice.call(arguments).sort(function (a, b) { return a - b });
   return result[0];
 }
 
@@ -139,10 +141,19 @@ function transform(arr) {
 }
 
 // 8) sum
+
+// non-recursive solution
 function sum() {
-  return Array.from(arguments).reduce(function (sum, cur) {
+  return Array.prototype.slice.call(arguments).reduce(function (sum, cur) {
     return sum + cur;
   }, 0);
+}
+
+// recursive solution
+function sum2() {
+  if (arguments.length === 0) return 0;
+  var args = Array.prototype.slice.call(arguments);
+  return args[0] + sum.apply(null, args.slice(1));
 }
 
 // 9) countDown
