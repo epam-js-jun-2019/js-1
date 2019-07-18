@@ -140,9 +140,14 @@ function transform(arr) {
 
 // 8) sum
 function sum() {
-  var result = 0;
-  Array.from(arguments).forEach(function (n) {
-    result += n;
-  });
-  return result;
+  return Array.from(arguments).reduce(function (sum, cur) {
+    return sum + cur;
+  }, 0);
+}
+
+// 9) countDown
+function countDown(value) {
+  for (var i = 0, iter = value; iter >= 0; iter-- , i += 1000) {
+    setTimeout(function () { console.log(value--) }, i);
+  }
 }
