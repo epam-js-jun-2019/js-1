@@ -56,7 +56,7 @@ console.log(reverseStr(" A fun little challenge! "));
 /////////////////////////////////////////////////////////////
 function stringExpansion(param) {
     var letters = param.match(/\d[A-za-z]+/g);
-    return letters != null ? letters.map(elem => {
+    return letters != null ? letters.map(function (elem) {
         return elem[1].repeat(elem[0]);
     }).join("") : param;
 };
@@ -69,13 +69,82 @@ console.log(stringExpansion("3d332f2a"));
 // 6
 /////////////////////////////////////////////////////////////
 function largest() {
-	return Math.max(...arguments);
-}
+    var argArray = Array.prototype.slice.call(arguments)
+    var temp = argArray[0];
+    for (var i = 0; i < argArray.length; i++) {
+        if (temp < argArray[i]) {
+            temp = argArray[i]
+        }
+    } return temp;
+};
 
 function smallest() {
-	return Math.min(...arguments);
-}
+    var argArray = Array.prototype.slice.call(arguments)
+    var temp = argArray[0];
+    for (var i = 0; i < argArray.length; i++) {
+        if (temp > argArray[i]) {
+            temp = argArray[i]
+        }
+    } return temp;
+};
 
 console.log(largest(2, 0.1, -5, 100, 3)); // 100
 console.log(smallest(2, 0.1, -5, 100, 3)); // -5
+/////////////////////////////////////////////////////////////
+
+
+// 7
+/////////////////////////////////////////////////////////////
+function transform(array) {
+    return array.map(function (element) {
+        return function() {
+            return element;
+        }
+    })
+};
+
+const baseArray = [10, 20, 30, 40, 50];
+const newArray = transform(baseArray);
+newArray[3](); // 40
+newArray[4](); // 50
+/////////////////////////////////////////////////////////////
+
+// 8
+/////////////////////////////////////////////////////////////
+function sum() {
+    return Array.prototype.slice
+    .call(arguments)
+    .reduce(function(acc, next) {
+        return acc + next;
+    }, 0)
+};
+
+sum(1,3,5,7); // 16
+/////////////////////////////////////////////////////////////
+
+// 9
+/////////////////////////////////////////////////////////////
+function countDown(number) {
+    var counter = 1;
+    for (var i = number + 1; i--;) {
+        (function(j) {
+            setTimeout(function() {
+                console.log(j);
+            }, 1000 * counter)
+        })(i)
+        counter++;
+    }
+}
+
+countDown(3); // 3 2 1 0
+/////////////////////////////////////////////////////////////
+
+// 10
+/////////////////////////////////////////////////////////////
+function.prototype.myBind = function(ctx) {
+    var self = this;
+    return function() {
+        return self.apply(ctx, Array.prototype.slice.call(arguments));
+    }
+};
 /////////////////////////////////////////////////////////////
