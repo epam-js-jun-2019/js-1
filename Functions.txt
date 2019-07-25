@@ -1,0 +1,87 @@
+//1
+function splitAndMerge(str, sp) {
+  let sentence = str.split(' ').join('').split('').join(sp);
+  return sentence;
+}
+
+//2
+const obj1 = {name: 'Jeremy', age: 24, role: 'Software Engineer'};
+function  convert (obj) {
+    var arr1= [];
+    for(var key in obj){
+      let arr2 = [];
+      arr2.push(key);
+      arr2.push(obj[key]);
+      arr1.push(arr2);
+    }
+  return arr1;
+  }
+
+
+console.log(convert(obj1));
+
+
+//4
+function reverse (arr){
+  var arr1 = arr.split(" ");
+  for (let i = 0; i < arr1.length; i++){
+    arr1[i] = arr1[i].split('').reverse().join('');
+  }
+  arr1 = arr1.join(' ');
+  return arr1;
+}
+
+
+//6
+function largest (){
+  var arr1 = [];
+  for(let i = 0; i < arguments.length; i++){
+    arr1[i] = arguments[i];
+  }
+  return Math.max.apply(null,arr1);
+}
+
+function smallest (){
+  var arr1 = [];
+  for(let i = 0; i < arguments.length; i++){
+    arr1[i] = arguments[i];
+  }
+  return Math.min.apply(null,arr1);
+}
+
+//7
+function transform(arg){
+  var arr1 = [];
+  for(let i = 0; i < arg.length; i++){
+    arr1[i] = function () {
+      return arg[i]}
+  }
+  return arr1;
+}
+
+//8
+
+function sum() {
+    if (arguments.length == 0) {
+        return 0;
+    } else {
+        var args = Array.prototype.slice.call(arguments);
+        return args[0] + sum.apply(null, args.slice(1));
+    }
+};
+
+//9
+ function countDown (number) {
+    while (number >= 0) {
+        setTimeout(console.log(number), 1000);
+        number--;
+    }
+};
+
+//10
+Function.prototype.myBind = function (context) {
+    var func = this;
+    return function () {
+        return func.apply(context, arguments);
+    }
+};
