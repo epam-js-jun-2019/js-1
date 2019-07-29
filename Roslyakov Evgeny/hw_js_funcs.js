@@ -55,12 +55,13 @@ function toCamelCase(str) {
 // ---------- 4 ---------- //
 
 function reverse(str) {
-    var temp = str.split(''),
+    var temp = str.split(' '),
         res = '';
-    for (var i = temp.length - 1; i >= 0; i--) {
-        res += temp[i];
-    }
-    return res;
+    temp.forEach(function (word) {
+        var newWord = word.split('').reverse().join('');
+        res += newWord + ' ';
+    })
+    return res.concat();
 }
 
 // console.log(reverse(" A fun little challenge! "));
