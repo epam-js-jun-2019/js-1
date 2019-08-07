@@ -1,6 +1,6 @@
 /*     convert       */
 function convert(obj){
-    let objKeys = Object.keys(obj);
+    var objKeys = Object.keys(obj);
     const res = objKeys.map(function(value){
         return [value, obj[value]];
     })

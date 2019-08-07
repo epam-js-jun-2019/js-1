@@ -1,16 +1,13 @@
 /*     largest     */
-function largest(arr)
+function largest()
 {
-    let numbers = [];
-    for(let i = 0; i < arguments.length; ++i)
+    var tmp = arguments[0];
+    for(var j = 0; j < arguments.length; ++j)
     {
-        numbers[i] = arguments[i];
-    }
-    let tmp = numbers[0];
-    for(let j = 0; j < numbers.length; ++j)
-    {
-       if(tmp < numbers[j])
-          tmp = numbers[j];
+       if(tmp < arguments[j])
+       {
+            tmp = arguments[j];
+       }
     }
     return tmp;
 }

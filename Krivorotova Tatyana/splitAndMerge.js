@@ -1,11 +1,13 @@
 /*   splitAndMerge   */
 function splitAndMerge(str, sp){
-    let wrds = str.split(' ');
-    const chars = [];
+    var wrds = str.split(' ');
+    var modifiedWrds = [];
     for(let i = 0; i < wrds.length; ++i)
-        chars.push(wrds[i].split('').join(sp));
-    chars = chars.join(' ');
-    console.log(chars);
+    {
+        modifiedWrds.push(wrds[i].split('').join(sp));
+    }
+    modifiedWrds = modifiedWrds.join(' ');
+    console.log(modifiedWrds);
 }
 console.log(splitAndMerge("Hello World!", ","));
 console.log(splitAndMerge("My name is John"," "));

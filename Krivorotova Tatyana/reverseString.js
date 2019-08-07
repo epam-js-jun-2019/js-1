@@ -1,10 +1,10 @@
 /*   reverseString   */
 function reverseString(str){
-    str = str.split(' ');
-    str = str.map(function(value){
+    var stringArr = str.split(' ');
+    stringArr = stringArr.map(function(value){
         return value.split('').reverse().join('');
     })
-    str = str.join(' ');
-    console.log(str);
+    stringArr = stringArr.join(' ');
+    console.log(stringArr);
 }
 console.log(reverseString(" A fun little challenge! "));
