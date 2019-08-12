@@ -2,7 +2,7 @@
 
 // FUNCTION 1: returns phrase with determined separator (via reduce)
 
-function splitAndMerge (str, sp) {
+function splitAndMerge(str, sp) {
 
     //separate phrase into words
     var arrOfWords = str.split(" ");
@@ -28,7 +28,7 @@ console.log("FUNCTION 1 (via reduce):               " + splitAndMerge("Hello Wor
 
 // FUNCTION 1: returns phrase with determined separator (via join)
 
-function splitAndMerge1 (str, sp) {
+function splitAndMerge1(str, sp) {
 
     //separate phrase into words
     var arrOfWords = str.split(" ");
@@ -51,7 +51,7 @@ console.log("FUNCTION 1 (via join):                 " + splitAndMerge1("My name 
 
 // FUNCTION 2: convertation hash to array (via entries)
 
-function convert (hash) {
+function convert(hash) {
     return Object.entries(hash);
 }
 
@@ -62,7 +62,7 @@ console.log("FUNCTION 2 (via entries):              " + convert(obj));
 
 // FUNCTION 2: convertation hash to array (via keys and map)
 
-function convert1 (hash) {
+function convert1(hash) {
     var arrOfKeys = Object.keys(hash);
     
     return arrOfKeys.map(function(key) {
@@ -77,17 +77,17 @@ console.log("FUNCTION 2 (via keys and map):         " + convert1(obj1));
 
 // FUNCTION 3: convertation dash/underscore string to camelCase
 
-function camelCase (str) {
+function camelCase(str) {
 
     var sep;
 
     // check what kind of separator sring has
 
-    str.search('-')>0 ? sep = '-' : sep = '_';
+    str.search('-') > 0 ? sep = '-' : sep = '_';
 
     var arr = str.split(sep).map(function(word, ind) {
 
-        if (ind!=0) {
+        if (ind !== 0) {
             return word.charAt(0).toUpperCase() + word.slice(1);
         } 
         
@@ -116,25 +116,25 @@ console.log("FUNCTION 4:                            " + reverse(" A fun little c
 
 function stringExpansion(string) {
 
-    var repeatSimbol = 1;
+    var repeatSymbol = 1;
 
-    return string.split("").reduce(function(acc,simbol,ind,arr) {
+    return string.split("").reduce(function(acc, symbol) {
 
-        // if the simbol is number
+        // if the symbol is number
 
-        if (isNaN(simbol)==false) {
+        if (isNaN(symbol)==false) {
 
-            repeatSimbol = +simbol;
+            repeatSymbol = +symbol;
 
-        // if the simbol is letter
+        // if the symbol is letter
 
         } else {
 
-            for (var i = 0; i < repeatSimbol; i++) {
-                acc = acc + simbol;
+            for (var i = 0; i < repeatSymbol; i++) {
+                acc = acc + symbol;
             }
 
-            repeatSimbol = 1;
+            repeatSymbol = 1;
 
             return acc;
         }
@@ -150,7 +150,7 @@ console.log("FUNCTION 5:                            " + stringExpansion("a0bcd4g
 
 // FUNCTION 6: largest and smallest number
 
-function largest () {
+function largest() {
 
     function compareNumbers(a, b) {
         return b - a;
@@ -167,7 +167,7 @@ function largest () {
     return numbers[0];
 }
 
-function smallest () {
+function smallest() {
 
     function compareNumbers(a, b) {
         return a - b;
@@ -190,7 +190,7 @@ console.log("FUNCTION 6 (smallest):                 " + smallest(2, -0.1, -5, 70
 
 // FUNCTION 7: transform array
 
-function transform (arr) {
+function transform(arr) {
     
     return arr.map(function(elem) {
         return function() {
@@ -208,11 +208,11 @@ console.log("FUNCTION 7:                            " + newArray[4]()); // 50
 
 // FUNCTION 8: sum of numbers (without recursion)
 
-function sum () {
+function sum() {
 
     var sumOfArgs=0;
 
-    for (var i=0; i<arguments.length; i++) {
+    for (var i = 0; i < arguments.length; i++) {
         sumOfArgs += arguments[i];
     }
 
@@ -220,12 +220,12 @@ function sum () {
 
 }
 
-console.log("FUNCTION 8 (without recursion):        " + sum(1,3,5,7));
+console.log("FUNCTION 8 (without recursion):        " + sum(1, 3, 5, 7));
 
 
 // FUNCTION 8: sum of numbers (recursion)
 
-function sum1 () {
+function sum1() {
 
     var i = arguments.length - 1;
     var newArguments=[];
@@ -252,7 +252,7 @@ console.log("FUNCTION 8 (recursion):                " + sum1(1,3,5,7,9));
 
 // FUNCTION 9: logs values with one second
 
-function countDown (number) {
+function countDown(number) {
 
     var interval = number * 1000 + 1000;
 
@@ -274,7 +274,7 @@ function countDown (number) {
 countDown(2);
 
 
-// FUNCTION 10: prototipe for bind()
+// FUNCTION 10: prototype for bind()
 
 Function.prototype.myBind = function (context) {
     var boundThis = this;
@@ -282,7 +282,7 @@ Function.prototype.myBind = function (context) {
 
     //add arguments in args array without context
     for (var i = 0; i < arguments.length-1; i++) {
-        args[i] = arguments[i+1];
+        args[i] = arguments[i + 1];
     }
 
     return function () {
