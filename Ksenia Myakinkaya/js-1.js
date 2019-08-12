@@ -29,9 +29,9 @@ function reverseWords(str){
     let arr=str.split(" ");
     let newStr=""
     arr.forEach(elem => {
-        newStr+=elem.split("").reverse().join("")+" "
+            newStr+=elem.split("").reverse().join("")+" ";
     });
-    return newStr.trim()
+    return newStr.substr(0,newStr.length-1);
 }
 
 function stringExpansion(str){
