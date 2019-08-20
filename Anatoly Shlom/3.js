@@ -8,8 +8,9 @@ toCamelCase("The_Stealth_Warrior") // returns "TheStealthWarrior" */
 function toCamelCase(str) {
     target=str.split('');
     target.reduce(function(acc, cur, n, arr) {
-        if(cur == '-' || cur == '_') {
+        if (cur == '-' || cur == '_') {
             arr[n+1] = arr[n+1].toUpperCase();
+            arr.splice(n,1);
             return acc;
         }
         return acc += cur;
