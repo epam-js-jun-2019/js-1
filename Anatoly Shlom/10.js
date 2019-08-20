@@ -13,14 +13,14 @@ bound(1) // 10*/
 Function.prototype.myBind = function () { 
     var target = this;
     var args = arguments[0];
-    curArgs = [].slice.call(arguments, 1);
+    var curArgs = [].slice.call(arguments, 1);
     return function() {
         var newArgs = [].slice.call(arguments);
-        targetArgs = curArgs.concat(newArgs);
+        var targetArgs = curArgs.concat(newArgs);
         return target.apply(args, targetArgs);
     }
 }
 
 function addPropToNumber(number) { return this.prop + number; }
-var bound = addPropToNumber.myBind({ prop: 9 });
+var bound = addPropToNumber.myBind({ prop: 10 });
 console.log(bound(1));

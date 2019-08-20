@@ -8,7 +8,7 @@ splitAndMerge("My name is John"," ") should return "M y n a m e i s J o h n"
 splitAndMerge("Hello World!",",") should return "H,e,l,l,o W,o,r,l,d,!" */
 
 function splitAndMerge (str, sp) {
-    target=str.split(' ').join('').split('').join(sp);
+    var target=str.split(' ').join('').split('').join(sp);
     return target
 }
 console.log(splitAndMerge("Hello there!",","))
