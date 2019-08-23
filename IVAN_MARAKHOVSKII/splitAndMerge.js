@@ -5,8 +5,10 @@ function splitAndMerge(str, spl) {
     return "";
   }
   ans.forEach(function(item, index) {
-    ans[index] = item.split("").join(spl);
+    ans[index] = item.split('').join(spl);
   });
   return ans.join(spl);
 }
+
+console.log(splitAndMerge('Hi my name is boobs',','))
 

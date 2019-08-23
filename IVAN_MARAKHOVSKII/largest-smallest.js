@@ -3,7 +3,8 @@ function largest(){
     for (let i = 1 ; i < arguments.length ; i++){
         if (arguments[i] > max ) max = arguments[i]
     }
-    return max
+    console.log(arguments.smallest)
+    return max  
 }
 function smallest(){
     let min = arguments[0];
@@ -12,3 +13,4 @@ function smallest(){
     }
     return min
 }
+console.log(largest(10,20,30,40,50,60))

@@ -1,11 +1,10 @@
 function transform(arr) {
-  for (let i = 0; i < arr.length; i++) {
-    let value = arr[i];
-    arr[i] = function() {
-      return value;
-    };
-  }
-  return arr;
+  const result = arr.map((el) =>{
+    return function(){
+      return el
+    }
+  })
+  return result;
 }
 
 const baseArray = [10, 20, 30, 40, 50];

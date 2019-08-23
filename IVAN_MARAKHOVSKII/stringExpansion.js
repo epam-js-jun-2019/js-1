@@ -1,5 +1,5 @@
 function stringExpansion(str) {
-  if (str == "") {
+  if (str === "") {
     return "";
   }
 
@@ -21,7 +21,7 @@ function stringExpansion(str) {
       ans += char;
     }
     // first char
-    if (!+char && i == 0) {
+    if (!+char && i === 0) {
       ans += str.charAt(0);
     }
   }
