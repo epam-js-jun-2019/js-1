@@ -2,7 +2,7 @@
 // 1
 /////////////////////////////////////////////////////////////
 function splitAndMerge(str, sp) {
-    var newStr = str.split(" ").join("").split("").join(sp);
+    var newStr = str.split(" ").join("").split([ ]).join(sp);
     return newStr;
 };
 
@@ -12,12 +12,8 @@ console.log(splitAndMerge("Hello World!", ","));
 
 // 2
 /////////////////////////////////////////////////////////////
-function convert(param) {
-    var result = [];
-    for (key in param) {
-        result.push( [key, param[key]] );
-    }
-    return result;
+function convert(obj) {
+    return Object.entries(obj);
 };
 
 var hash = {name: 'Jeremy', age: 24, role: 'Software Engineer'}
@@ -29,7 +25,7 @@ console.log(convert(hash));
 /////////////////////////////////////////////////////////////
 function toCamelCase(param) {
     var camel = param.replace(/\_/g,'-');
-    camel = camel.split('-');
+    camel = camel.split(/[-]/);
     for (i = 1; i < camel.length; i++) {
         camel[i] = camel[i][0].toUpperCase() + camel[i].slice(1);
     }
@@ -44,11 +40,13 @@ console.log(toCamelCase("The_Stealth_Warrior"));
 
 // 4
 /////////////////////////////////////////////////////////////
-function reverseStr(param) {
-    return param.split("").reverse().join("");
+function reverseStr(str) {
+    return str.split(' ').map(function(word) {
+        return word.split('').reverse().join('')
+    }).join(' ');
 }
 
-console.log(reverseStr(" A fun little challenge! "));
+console.log(reverseStr("Some new test words to reverse"))   
 /////////////////////////////////////////////////////////////
 
 
@@ -103,23 +101,23 @@ function transform(array) {
     })
 };
 
-const baseArray = [10, 20, 30, 40, 50];
-const newArray = transform(baseArray);
-newArray[3](); // 40
-newArray[4](); // 50
+var baseArray = [10, 20, 30, 40, 50];
+var newArray = transform(baseArray);
+console.log(newArray[3]()); // 40
+console.log(newArray[4]()); // 50
 /////////////////////////////////////////////////////////////
 
 // 8
 /////////////////////////////////////////////////////////////
-function sum() {
-    return Array.prototype.slice
-    .call(arguments)
-    .reduce(function(acc, next) {
-        return acc + next;
-    }, 0)
-};
+function sum(digits) {
+    if (arguments.length === 1) {
+        return digits;
+    } else {
+        return digits + sum.apply(null, [].slice.call(arguments,1));
+    }
+}
 
-sum(1,3,5,7); // 16
+console.log(sum(1,3,5,7));
 /////////////////////////////////////////////////////////////
 
 // 9
@@ -141,10 +139,17 @@ countDown(3); // 3 2 1 0
 
 // 10
 /////////////////////////////////////////////////////////////
-function.prototype.myBind = function(ctx) {
-    var self = this;
-    return function() {
-        return self.apply(ctx, Array.prototype.slice.call(arguments));
-    }
+Function.prototype.myBind = function (ctx) {
+    var self = this,
+    arg = [].slice.call(arguments),
+    ctx = arg.shift();
+        return function () {
+            return self.apply(ctx, arg.concat([].slice.call(arguments)));
+        };
 };
+
+function addPropToNumber(number) { return this.prop + number; }
+var bound = addPropToNumber.myBind({ prop: 9 });
+bound(1)
 /////////////////////////////////////////////////////////////
+
