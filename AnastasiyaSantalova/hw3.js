@@ -18,9 +18,9 @@ function splitAndMerge(str, sp) {
         });
     });
 
-    //add new separator between words
+    //add separator between words
     return arrOfLetters.reduce(function(acc, word) {
-        return acc + sp + word;
+        return acc + " " + word;
     });
 }
 
@@ -42,11 +42,11 @@ function splitAndMerge1(str, sp) {
         return letters.join(sp);
     });
 
-    //add new separator between words
-    return arrOfLetters.join(sp);
+    //add separator between words
+    return arrOfLetters.join(" ");
 }
 
-console.log("FUNCTION 1 (via join):                 " + splitAndMerge1("My name is John", " "));
+console.log("FUNCTION 1 (via join):                 " + splitAndMerge1("My name is John", "/"));
 
 
 // FUNCTION 2: convertation hash to array (via entries)
@@ -122,7 +122,7 @@ function stringExpansion(string) {
 
         // if the symbol is number
 
-        if (isNaN(symbol)==false) {
+        if (isNaN(symbol) === false) {
 
             repeatSymbol = +symbol;
 
@@ -156,7 +156,7 @@ function largest() {
         return b - a;
       }
 
-    var numbers=[];
+    var numbers = [];
     
     // transform arguments into array numbers
     for (var i = 0; i < arguments.length; i++) {
@@ -210,7 +210,7 @@ console.log("FUNCTION 7:                            " + newArray[4]()); // 50
 
 function sum() {
 
-    var sumOfArgs=0;
+    var sumOfArgs = 0;
 
     for (var i = 0; i < arguments.length; i++) {
         sumOfArgs += arguments[i];
@@ -228,7 +228,7 @@ console.log("FUNCTION 8 (without recursion):        " + sum(1, 3, 5, 7));
 function sum1() {
 
     var i = arguments.length - 1;
-    var newArguments=[];
+    var newArguments = [];
 
     // transform arguments into array newArguments
     for (var i = 0; i < arguments.length - 1; i++){
@@ -287,7 +287,7 @@ Function.prototype.myBind = function (context) {
 
     return function () {
 
-        var innerArgs=[];
+        var innerArgs = [];
 
         //transform arguments into array innerArgs
         for (var i = 0; i < arguments.length; i++) {
