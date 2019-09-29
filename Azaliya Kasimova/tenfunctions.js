@@ -8,23 +8,18 @@ console.log(splitAndMerge("Hello World!", ","));
 
 //FUNCTION #2
 function convert(obj) {
-    return Object.keys(obj).map(function(clue) { return [clue, obj[clue]]; })
+    return Object.entries(obj);
 }
 
 console.log(convert({ name: 'Jeremy', age: 24, role: 'Software Engineer' }));
 
 //FUNCTION #3
 function toCamelCase(str) {
-    var a = str.search("-");
-    if (a > 0) {
-        sp = "-";
-    } else {
-        sp = "_";
-    }
-
-    return str[0] + str.split(sp).map(function(word) {
-        return word[0].toUpperCase() + word.substr(1);
-    }).join("").substr(1);
+    var camel = '';
+    arr = str.split(/[-_]/);
+    camel = arr[0] + arr[1].charAt(0).toUpperCase() + arr[1].substr(1) +
+    arr[2].charAt(0).toUpperCase() + arr[2].substr(1);
+    return camel;
 }
 
 console.log(toCamelCase("the-stealth-warrior"));
