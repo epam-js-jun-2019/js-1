@@ -37,18 +37,16 @@ console.log(reverseWords(" A fun little challenge! "));
 
 //FUNCTION #5
 function stringExpansion(str) {
-    var result = "";
-    str.split('').forEach(function(char, index, arr) {
+    return str.split('').map(function(char, index, arr) {
         if (/\d/.test(char)) {
           if (/[a-z]/i.test(arr[index+1])) {
-            result += arr[index+1].repeat(Number.parseInt(char) - 1);
+            return arr[index+1].repeat(Number.parseInt(char) - 1);
           }
         }
         else {
-          result += char;
+          return char;
         }
-      });
-    return result;
+      }).join('');
 }
 
 console.log(stringExpansion('3D2a5d2f'));
