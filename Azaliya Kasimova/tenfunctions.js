@@ -38,21 +38,16 @@ console.log(reverseWords(" A fun little challenge! "));
 //FUNCTION #5
 function stringExpansion(str) {
     var result = "";
-    str.split("").forEach(function(value, index, array) {
-        // check if value is digit
-        if ( value <= 9 ) {
-            // check if next char after value is letter 
-            if (array[index+1] > '9' ) {
-                // repeat letter 
-                for (i=0; i<value-1; i++) {
-                    result += array[index+1];
-                }
-            }
+    str.split('').forEach(function(char, index, arr) {
+        if (/\d/.test(char)) {
+          if (/[a-z]/i.test(arr[index+1])) {
+            result += arr[index+1].repeat(Number.parseInt(char) - 1);
+          }
         }
         else {
-            result += value;
+          result += char;
         }
-    });
+      });
     return result;
 }
 
